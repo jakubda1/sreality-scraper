@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:15
+    container_name: reality-db
+    ports:
+      - "5432:5431"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: adminadmin
+      POSTGRES_DB: SREALITY
+    networks:
+      - app-net
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - static_volume:/app/staticfiles
+    networks:
+      - app-net
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - db
+
+networks:
+  app-net:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  static_volume:

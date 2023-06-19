@@ -1,0 +1,22 @@
+{% if name and src %}
+    <div class="reality-card">
+        <h2>{{ name }}</h2>
+        <img class="reality-card-img" src="{{ src }}">
+    </div>
+{% endif %}
+
+<style>
+    .reality-card {
+        padding: 20px;
+        width: 250px;
+        cursor: pointer;
+        border: 1px solid #2c3e50;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
+
+    .reality-card-img {
+        width: 100%;
+        height: auto;
+    }
+</style>

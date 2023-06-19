@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Realities</h1>
+<div class="reality-container">
+    {% for reality in realities %}
+        {% include "reality_card.html" with name=reality.title src=reality.image_url %}
+    {% endfor %}
+</div>
+
+
+</body>
+</html>
+
+<style>
+    h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reality-container {
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+</style>
